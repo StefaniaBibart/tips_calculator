@@ -1,0 +1,436 @@
+/* General Styles (same as before) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffe4e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Added to handle overflow when sidebar collapses */
+}
+
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #d6336c;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container-main {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 200px;
+  background-color: #d6336c;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-200px); /* Hide sidebar */
+  width: 0px;
+}
+
+.toggle-button {
+  background-color: #fff;
+  color: #d6336c;
+  border-color: #d6336c;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  /* margin-top: 15px;
+    margin-left: 15px;
+    position: absolute; */
+  z-index: 10; /* Ensure it stays on top of other elements */
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.participants-list {
+  max-height: 250px;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+}
+
+.participants-list li {
+  padding: 8px;
+  background-color: #ff80ab;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.participants-list li button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.participant-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.participant-form input {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  width: 70%; /* Adjust input width */
+}
+
+/* Add Button Styling to Match the Rest of the App */
+#addParticipantButton {
+  padding: 10px;
+  background-color: #ff80ab;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-grow: 1;
+  transition: background-color 0.3s ease;
+}
+
+#addParticipantButton:hover {
+  background-color: #f06292;
+}
+
+#selectWinnerButton {
+  background-color: #ff80ab;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Pushes the button to the bottom of the sidebar */
+  box-sizing: border-box;
+}
+
+#selectWinnerButton:disabled {
+  background-color: #f06292;
+  cursor: not-allowed;
+}
+
+/* Content Styles (same as before) */
+.content {
+  padding: 20px;
+  flex-grow: 1;
+  transition: margin-left 0.3s ease; /* Smooth transition for content */
+  overflow: auto;
+  position: relative;
+}
+
+.title {
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  color: #d6336c;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ff80ab;
+  border-radius: 4px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tip-btn {
+  background-color: #ff80ab;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tip-btn:hover {
+  background-color: #f06292;
+}
+
+.tip-btn.selected {
+  background-color: #d6336c;
+}
+
+.wide {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.custom-tip {
+  margin-top: 10px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #d6336c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #c2185b;
+}
+
+.btn[disabled] {
+  background-color: #ff80ab;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #ffebee;
+  border-radius: 4px;
+  display: none;
+}
+
+.result p {
+  margin-bottom: 8px;
+  color: #d6336c;
+}
+
+.reset {
+  background-color: #ff80ab;
+  margin-top: 10px;
+}
+
+.reset:hover {
+  background-color: #f06292;
+}
+
+/* Dialog */
+
+#winnerDialog {
+  position: absolute;
+  top: 50%; /* Center vertically within the sidebar */
+  left: 50%; /* Center horizontally within the sidebar */
+  transform: translate(-50%, -50%); /* Offset to center it perfectly */
+  width: 80%; /* Smaller width to fit well in the sidebar */
+  max-width: 160px; /* Ensures it doesn’t exceed the sidebar’s width */
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Center the winner text */
+  z-index: 10; /* Ensures the dialog is above other sidebar elements */
+}
+
+#winnerDialog p {
+  color: #d6336c;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#winnerDialog button {
+  background-color: #ff80ab;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* input:invalid + span::after {
+    content: "✖";
+    padding-left: 5px;
+  }
+  
+  input:valid + span::after {
+    content: "✓";
+    padding-left: 5px;
+  } */
+
+#errorMessageParticipantName {
+  display: none;
+  text-align: center;
+}
+
+/* Settings Button and Dropdown */
+.settings-menu {
+  position: relative;
+}
+
+.settings-button {
+  background-color: #fff;
+  color: #d6336c;
+  border-color: #d6336c;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  padding: 10px;
+  z-index: 10;
+}
+
+.dropdown.open {
+  display: block;
+}
+
+.dropdown-item {
+  position: relative;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+/* Submenu - Adjusted to Open to the Left */
+.submenu {
+  display: none;
+  position: absolute;
+  right: 100%; /* Makes the submenu open to the left */
+  top: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 120px;
+  padding: 5px 0;
+  z-index: 10;
+}
+
+.dropdown-item:hover .submenu {
+  display: block; /* Show submenu on hover */
+}
+
+.submenu-item {
+  padding: 8px 15px;
+  cursor: pointer;
+  color: #333;
+}
+
+.submenu-item:hover {
+  background-color: #f2f2f2;
+}
+
+/* Dark Theme */
+body.dark {
+  background-color: #2e2e2e;
+  color: #f5f5f5;
+}
+
+body.dark .container {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+body.dark .sidebar {
+  background-color: #444;
+}
+
+body.dark .tip-btn,
+body.dark .btn,
+body.dark .reset,
+body.dark #addParticipantButton,
+body.dark #selectWinnerButton {
+  background-color: #555;
+  color: #f5f5f5;
+}
+
+body.dark .dropdown,
+body.dark .submenu {
+  background-color: #444;
+  border-color: #666;
+}
+
+body.dark .submenu-item {
+  color: #f5f5f5;
+}
+
+body.dark .submenu-item:hover {
+  background-color: #555;
+}
+
+/* Currency Input Group */
+.currency-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 10px;
+  color: #888;
+  font-size: 1em;
+}
+
+.currency-input .input {
+  padding-left: 25px; /* Space for the currency symbol */
+}

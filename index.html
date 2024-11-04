@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator with Participants</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header Section for Toggle and Settings Menu -->
+      <header class="header">
+        <!-- Toggle Button for Sidebar on the Left -->
+        <button class="toggle-button" id="toggleSidebar">→</button>
+        <h1 class="title">Tip Calculator</h1>
+        <!-- Settings Menu on the Right -->
+        <div class="settings-menu">
+          <button id="settingsButton" class="settings-button">⚙</button>
+          <div class="dropdown" id="settingsDropdown">
+            <div class="dropdown-item">
+              <span>Currency</span>
+              <div class="submenu">
+                <div class="submenu-item" data-value="default">Default</div>
+                <div class="submenu-item" data-value="euro">Euro (€)</div>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <span>Theme</span>
+              <div class="submenu">
+                <div class="submenu-item" data-value="pink">Pink</div>
+                <div class="submenu-item" data-value="dark">Dark</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Container Section for Sidebar and Content -->
+      <div class="container-main">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+          <h2>Participants</h2>
+
+          <div class="participant-form">
+            <input type="text" id="participantInput" placeholder="Enter name" />
+            <button id="addParticipantButton">Add</button>
+          </div>
+
+          <span id="errorMessageParticipantName"
+            >This name is already in the list!</span
+          >
+
+          <ul class="participants-list" id="participantsList"></ul>
+
+          <dialog id="winnerDialog">
+            <p id="winnerName"></p>
+            <button id="closeDialogButton">Close</button>
+          </dialog>
+
+          <button id="selectWinnerButton" disabled>Select Winner</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+          <div class="input-group">
+            <label for="billAmount" class="label">Bill Amount</label>
+            <div class="currency-input">
+              <span class="currency-symbol" id="currencySymbol"
+                >{{ currency-symbol }}</span
+              >
+              <input
+                type="number"
+                id="billAmount"
+                placeholder="Enter bill amount"
+                class="input"
+                required
+                step="0.01"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="label">Select Tip</label>
+            <div class="grid">
+              <button class="tip-btn" data-percentage="5">5%</button>
+              <button class="tip-btn" data-percentage="10">10%</button>
+              <button class="tip-btn" data-percentage="15">15%</button>
+            </div>
+            <button class="tip-btn wide" data-percentage="0">No Tip</button>
+            <input
+              type="number"
+              id="customTip"
+              placeholder="Custom %"
+              class="input custom-tip wide"
+              step="1"
+              min="0"
+            />
+          </div>
+
+          <button id="calculateBtn" class="btn" disabled>Calculate</button>
+
+          <div id="result" class="result">
+            <p id="initialAmount"></p>
+            <p id="tipAmount"></p>
+            <p id="totalAmount"></p>
+          </div>
+
+          <button id="resetBtn" class="btn reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
